@@ -13,9 +13,9 @@
 - **Eduardo Galvao:**	Math, 3D renderer, debugging
 
 ## Current Progress Update
-We have made a small solar system in python with the Earth, Moon, and Sun. We have made them go around each other in orbit.
+We have created a small solar system in Python with the Earth, Moon, and Sun, making them revolve around each other in orbit.
 
-#### What to do
--Make a rocket ship
--Visualize the path of Artemis II
--Make a website
+### What to do
+- Make a rocket ship
+- Visualize the path of Artemis II
+- Make a website
