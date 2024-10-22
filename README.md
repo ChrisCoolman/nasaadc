@@ -1,6 +1,6 @@
 # 🚀 The Astroworlds 🚀
-Nasa App Development Challenge Group!
-We are working on visualizing the Artemis II mission!
+Nasa App Development Challenge Group!\n
+We are working on visualizing the Artemis II mission!\n
 We are using **python** and the **ursina** game engine
 
 ## Team Members and roles
