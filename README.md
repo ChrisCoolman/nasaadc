@@ -9,7 +9,7 @@
 - **Joshua Sanchez:**	Web Design, Bug Testing
 - **Shane Pricken:**	Ursina person, App Development
 - **Matthew Martin:**	Ursina person, App Development, Github, 3D renderer
-- **TJ Wangchuk:**	Ursina Person, debugging,testing
+- **TJ Wangchuk:**	Ursina Person, debugging, testing
 - **Eduardo Galvao:**	Math, 3D renderer, debugging
 
 ## Current Progress Update
