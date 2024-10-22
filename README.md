@@ -1,7 +1,7 @@
 # 🚀 The Astroworlds 🚀
 - Nasa App Development Challenge Group! 
 - We are working on visualizing the Artemis II mission! 
-- We are using **python** and the **ursina** game engine!
+- We are using **python** and the **[Ursina](https://www.ursinaengine.org/)** game engine!
 
 ## Team Members and roles
 - **Bryce Lombardo:** 	Outreach Leader, Data analysis, Troubleshooter, Web Design
