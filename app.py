@@ -7,22 +7,37 @@ Earth = Entity(model="sphere", texture="earth.jpg")
 Sun = Entity(model="sphere", texture="sun.jpg")
 Moon = Entity(model="sphere", texture="moon.jpg")
 
+earthLock = False
+
 window.color = color.black
 
 earth_orbit_radius = 92.522
 earth_orbit_speed = 0.1
 earth_orbit_angle = 0
 
-moon_orbit_radius = 3  # Adjust this value to change the Moon's distance from Earth
-moon_orbit_speed = 0.5  # Adjust this value to change the Moon's orbit speed
+moon_orbit_radius = 23.8
+moon_orbit_speed = 0.5
 moon_orbit_angle = 0
+
+# Create a custom camera
+camera_pivot = Entity()
+camera.parent = camera_pivot
+editor_camera = EditorCamera(enabled=True)
+
+def input(key):
+    global earthLock
+    if key == 'f':
+        earthLock = not earthLock
+        # Toggle between EditorCamera and locked camera
+        editor_camera.enabled = not earthLock
+        camera_pivot.enabled = earthLock
 
 def update():
     global earth_orbit_angle, moon_orbit_angle
     
     # Rotate Earth and Moon
-    Earth.rotation_y += time.dt * 100  # Adjust the rotation speed as needed
-    Moon.rotation_y += time.dt * 1000  # Adjust the rotation speed as needed
+    Earth.rotation_y += time.dt * 100
+    Moon.rotation_y += time.dt * 1000
 
     # Update Earth's orbital position
     earth_orbit_angle += time.dt * earth_orbit_speed
@@ -40,6 +55,12 @@ def update():
     # Update Moon's position
     Moon.position = Earth.position + Vec3(moonX, 0, moonZ)
 
+    # Smooth camera following
+    if earthLock:
+        target_pos = Earth.position + Vec3(0, 5, -10)
+        camera_pivot.position = lerp(camera_pivot.position, target_pos, time.dt * 5)
+        camera_pivot.look_at(Earth)
+
 # Set up Sun
 Sun.position = (0, 0, 0)
 Sun.scale = (109.255, 109.255, 109.255)
@@ -50,10 +71,9 @@ Moon.scale = (0.25, 0.25, 0.25)
 # Set up Earth
 Earth.scale = (1, 1, 1)
 
-# Set up camera
-EditorCamera()
-camera.position = (0, 0, 0)
-
+# Initial camera setup
+camera.position = (0, 0, -20)
+camera_pivot.enabled = False
 
 skybox_image = load_texture("stars.png")
 Sky(texture=skybox_image)
