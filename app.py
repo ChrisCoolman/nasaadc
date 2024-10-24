@@ -7,7 +7,10 @@ Earth = Entity(model="sphere", texture="earth.jpg")
 Sun = Entity(model="sphere", texture="sun.jpg")
 Moon = Entity(model="sphere", texture="moon.jpg")
 
+a = Audio("woosh.mp3", loop=False, autoplay=False)
+
 earthLock = False
+moonLock = False
 
 window.color = color.black
 
@@ -25,14 +28,20 @@ camera.parent = camera_pivot
 editor_camera = EditorCamera(enabled=True)
 
 def input(key):
-    global earthLock
+    global earthLock, moonLock, a
     if key == 'f':
-        a = Audio("woosh.mp3", loop=False, autoplay=False)
         a.play()
+        moonLock = False
         earthLock = not earthLock
         # Toggle between EditorCamera and locked camera
         editor_camera.enabled = not earthLock
         camera_pivot.enabled = earthLock
+    elif key == 'm':
+        a.play()
+        earthLock = False
+        moonLock = not moonLock
+        editor_camera.enabled = not moonLock
+        camera_pivot.enabled = moonLock
     elif key == 'g':
         # Slow Down Time
         application.time_scale += 1
@@ -64,9 +73,14 @@ def update():
 
     # Smooth camera following
     if earthLock:
-        target_pos = Earth.position + Vec3(0, 5, -10)
+        target_pos = Earth.position + Vec3(0, 3, -5)
         camera_pivot.position = lerp(camera_pivot.position, target_pos, time.dt * 5)
         camera_pivot.look_at(Earth)
+
+    elif moonLock:
+        target_pos = Moon.position + Vec3(0, 3, -5)
+        camera_pivot.position = lerp(camera_pivot.position, target_pos, time.dt * 5)
+        camera_pivot.look_at(Moon)
 
 # Set up Sun
 Sun.position = (0, 0, 0)
@@ -80,6 +94,7 @@ Earth.scale = (1, 1, 1)
 
 # Initial camera setup
 camera.position = (0, 0, -20)
+camera.rotation_z += 13
 camera_pivot.enabled = False
 
 skybox_image = load_texture("stars.jpg")
