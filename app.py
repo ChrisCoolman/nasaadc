@@ -2,7 +2,7 @@ from ursina import *
 from ursina.shaders import lit_with_shadows_shader
 import math
 
-app = Ursina()
+app = Ursina(title='Astroworlds')
 Earth = Entity(model="sphere", texture="earth.jpg")
 Sun = Entity(model="sphere", texture="sun.jpg")
 Moon = Entity(model="sphere", texture="moon.jpg")
@@ -11,7 +11,7 @@ earthLock = False
 
 window.color = color.black
 
-earth_orbit_radius = 92.522
+earth_orbit_radius = 162 # Changed from 92.522
 earth_orbit_speed = 0.1
 earth_orbit_angle = 0
 
@@ -27,10 +27,17 @@ editor_camera = EditorCamera(enabled=True)
 def input(key):
     global earthLock
     if key == 'f':
+        a = Audio("woosh.mp3", loop=False, autoplay=False)
+        a.play()
         earthLock = not earthLock
         # Toggle between EditorCamera and locked camera
         editor_camera.enabled = not earthLock
         camera_pivot.enabled = earthLock
+    elif key == 'g':
+        # Slow Down Time
+        application.time_scale += 1
+    elif key == 'h':
+        application.time_scale -= 1
 
 def update():
     global earth_orbit_angle, moon_orbit_angle
@@ -75,7 +82,7 @@ Earth.scale = (1, 1, 1)
 camera.position = (0, 0, -20)
 camera_pivot.enabled = False
 
-skybox_image = load_texture("stars.png")
+skybox_image = load_texture("stars.jpg")
 Sky(texture=skybox_image)
 
 app.run()
