@@ -6,6 +6,7 @@ app = Ursina(title='Astroworlds')
 Earth = Entity(model="sphere", texture="earth.jpg")
 Sun = Entity(model="sphere", texture="sun.jpg")
 Moon = Entity(model="sphere", texture="moon.jpg")
+Orion = Entity(model="Orion.obj", scale=.01)
 
 a = Audio("woosh.mp3", loop=False, autoplay=False)
 
