@@ -1,12 +1,12 @@
 from ursina import *
 from ursina.shaders import lit_with_shadows_shader
 import math
+from ursina.prefabs.health_bar import HealthBar
 
 app = Ursina(title='Astroworlds')
 Earth = Entity(model="sphere", texture="earth.jpg")
-Sun = Entity(model="sphere", texture="sun.jpg")
 Moon = Entity(model="sphere", texture="moon.jpg")
-Orion = Entity(model="Orion.obj", scale=.01)
+Orion = Entity(model="Orion.obj")
 
 a = Audio("woosh.mp3", loop=False, autoplay=False)
 
@@ -15,11 +15,10 @@ moonLock = False
 
 window.color = color.black
 
-earth_orbit_radius = 162 # Changed from 92.522
-earth_orbit_speed = 0.1
-earth_orbit_angle = 0
+timeBar = HealthBar(bar_color=color.lime.tint(-.25), roundness=.5, max_value=12983, value=100, scale=(.5,.1))
+print(timeBar.text_entity.enabled, timeBar.text_entity.text)
 
-moon_orbit_radius = 23.8
+moon_orbit_radius = 238
 moon_orbit_speed = 0.5
 moon_orbit_angle = 0
 
@@ -27,6 +26,10 @@ moon_orbit_angle = 0
 camera_pivot = Entity()
 camera.parent = camera_pivot
 editor_camera = EditorCamera(enabled=True)
+
+# Initial camera setup
+camera.position = (0, 0, -40)
+camera_pivot.enabled = False
 
 def input(key):
     global earthLock, moonLock, a
@@ -50,19 +53,10 @@ def input(key):
         application.time_scale -= 1
 
 def update():
-    global earth_orbit_angle, moon_orbit_angle
+    global moon_orbit_angle
     
     # Rotate Earth and Moon
-    Earth.rotation_y += time.dt * 100
-    Moon.rotation_y += time.dt * 1000
-
-    # Update Earth's orbital position
-    earth_orbit_angle += time.dt * earth_orbit_speed
-    earthX = math.cos(earth_orbit_angle) * earth_orbit_radius
-    earthZ = math.sin(earth_orbit_angle) * earth_orbit_radius
-    
-    # Update Earth's position
-    Earth.position = (earthX, 0, earthZ)
+    Earth.rotation_y += time.dt 
     
     # Update Moon's orbital position relative to Earth
     moon_orbit_angle += time.dt * moon_orbit_speed
@@ -83,20 +77,19 @@ def update():
         camera_pivot.position = lerp(camera_pivot.position, target_pos, time.dt * 5)
         camera_pivot.look_at(Moon)
 
-# Set up Sun
-Sun.position = (0, 0, 0)
-Sun.scale = (109.255, 109.255, 109.255)
+
 
 # Set up Moon
-Moon.scale = (0.25, 0.25, 0.25)
+Moon.scale = (9.897, 9.897, 9.897)
 
 # Set up Earth
-Earth.scale = (1, 1, 1)
+Earth.scale = (39.588, 39.588, 39.588)
 
-# Initial camera setup
-camera.position = (0, 0, -20)
-camera.rotation_z += 13
-camera_pivot.enabled = False
+# Orion
+Orion.position = (15, 0, 15)
+Orion.scale = 0.005
+
+
 
 skybox_image = load_texture("stars.jpg")
 Sky(texture=skybox_image)
