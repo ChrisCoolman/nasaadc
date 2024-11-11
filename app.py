@@ -1,12 +1,14 @@
 from ursina import *
-from ursina.shaders import lit_with_shadows_shader
 import math
-from ursina.prefabs.health_bar import HealthBar
 
 app = Ursina(title='Astroworlds')
 Earth = Entity(model="sphere", texture="earth.jpg")
 Moon = Entity(model="sphere", texture="moon.jpg")
 Orion = Entity(model="Orion.obj")
+
+txt = Text(text="X = " + str(time.dt + 1), position=(-.78, .4))
+txt2 = Text(text="Z = " + str(time.dt + 1), position=(-.78, .4))
+txt3 = Text(text="Y = " + str(time.dt + 1), position=(-.78, .4))
 
 a = Audio("woosh.mp3", loop=False, autoplay=False)
 
@@ -15,12 +17,26 @@ moonLock = False
 
 window.color = color.black
 
-timeBar = HealthBar(bar_color=color.lime.tint(-.25), roundness=.5, max_value=12983, value=100, scale=(.5,.1))
-print(timeBar.text_entity.enabled, timeBar.text_entity.text)
-
 moon_orbit_radius = 238
 moon_orbit_speed = 0.5
 moon_orbit_angle = 0
+
+# Set up Moon
+Moon.scale = (9.897, 9.897, 9.897)
+
+# Set up Earth
+Earth.scale = (39.588, 39.588, 39.588)
+
+# Orion
+Orion.position = (15, 0, 15)
+Orion.position_x = 15 
+Orion.position_y = 0
+Orion.position_z = 15
+Orion.scale = 0.005
+
+orionX = Orion.position_x
+orionZ = Orion.position_z
+orionY = Orion.position_y
 
 # Create a custom camera
 camera_pivot = Entity()
@@ -53,7 +69,7 @@ def input(key):
         application.time_scale -= 1
 
 def update():
-    global moon_orbit_angle
+    global moon_orbit_angle, orionX, orionZ, orionY
     
     # Rotate Earth and Moon
     Earth.rotation_y += time.dt 
@@ -76,20 +92,15 @@ def update():
         target_pos = Moon.position + Vec3(0, 3, -5)
         camera_pivot.position = lerp(camera_pivot.position, target_pos, time.dt * 5)
         camera_pivot.look_at(Moon)
+    
+    txt.text="X = " + str(orionX)
+    txt.position=(-.78, .4)
 
+    txt2.text="Z = " + str(orionZ)
+    txt2.position=(-.78, .37)
 
-
-# Set up Moon
-Moon.scale = (9.897, 9.897, 9.897)
-
-# Set up Earth
-Earth.scale = (39.588, 39.588, 39.588)
-
-# Orion
-Orion.position = (15, 0, 15)
-Orion.scale = 0.005
-
-
+    txt3.text="Y = " + str(orionY)
+    txt3.position=(-.78, .34)
 
 skybox_image = load_texture("stars.jpg")
 Sky(texture=skybox_image)
