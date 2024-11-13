@@ -96,7 +96,7 @@ def update():
         camera_pivot.position = lerp(camera_pivot.position, target_pos, time.dt * 5)
         camera_pivot.look_at(Moon)
 
-    orionX += time.dt*5
+    # orionX += time.dt*5
     Orion.position = (orionX, orionY, orionZ)
     Arrow.look_at(Orion, axis="up")
     
