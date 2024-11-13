@@ -7,6 +7,7 @@ Moon = Entity(model="sphere", texture="moon.jpg")
 Orion = Entity(model="Orion.obj")
 Arrow = Entity(model="ballcam.obj", position=(20,0,-20), scale=0.5, color=color.gray)
 
+
 txt = Text(text="X = " + str(time.dt + 1), position=(-.78, .4))
 txt2 = Text(text="Z = " + str(time.dt + 1), position=(-.78, .4))
 txt3 = Text(text="Y = " + str(time.dt + 1), position=(-.78, .4))
@@ -15,6 +16,7 @@ a = Audio("woosh.mp3", loop=False, autoplay=False)
 
 earthLock = False
 moonLock = False
+orionLock = False
 
 window.color = color.black
 
@@ -44,7 +46,7 @@ camera.position = (0, 0, -40)
 camera_pivot.enabled = False
 
 def input(key):
-    global earthLock, moonLock, a
+    global earthLock, moonLock, a, orionLock
     if key == 'f':
         a.play()
         moonLock = False
@@ -58,6 +60,13 @@ def input(key):
         moonLock = not moonLock
         editor_camera.enabled = not moonLock
         camera_pivot.enabled = moonLock
+    elif key == 'r':  # New key to focus on Orion
+        a.play()
+        earthLock = False
+        moonLock = False
+        orionLock = not orionLock
+        editor_camera.enabled = not orionLock
+        camera_pivot.enabled = orionLock
     elif key == 'g':
         # Slow Down Time
         application.time_scale += 1
