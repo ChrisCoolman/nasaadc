@@ -58,13 +58,6 @@ def input(key):
         moonLock = not moonLock
         editor_camera.enabled = not moonLock
         camera_pivot.enabled = moonLock
-    elif key == 'r':  # New key to focus on Orion
-        a.play()
-        earthLock = False
-        moonLock = False
-        orionLock = not orionLock
-        editor_camera.enabled = not orionLock
-        camera_pivot.enabled = orionLock
     elif key == 'g':
         # Slow Down Time
         application.time_scale += 1
