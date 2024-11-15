@@ -2,17 +2,19 @@ from ursina import *
 import math
 import data
 
-
 app = Ursina(title='Astroworlds')
 Earth = Entity(model="sphere", texture="earth.jpg")
 Moon = Entity(model="sphere", texture="moon.jpg")
 Orion = Entity(model="Orion.obj")
 Arrow = Entity(model="ballcam.obj", position=(20,0,-20), scale=0.5, color=color.gray)
 
+# Start the clock 
+start_time = time.time()
 
 txt = Text(text="X = " + str(time.dt + 1), position=(-.78, .4))
 txt2 = Text(text="Z = " + str(time.dt + 1), position=(-.78, .4))
 txt3 = Text(text="Y = " + str(time.dt + 1), position=(-.78, .4))
+txttime = Text(text="Time Elapsed = ", position=(-.78, .4))
 
 a = Audio("woosh.mp3", loop=False, autoplay=False)
 
@@ -78,6 +80,8 @@ def input(key):
 def update():
     global moon_orbit_angle, orionX, orionZ, orionY
     
+    currentTime = math.floor(time.time() - start_time)
+    print(str(math.floor(float(currentTime - 8))))
     # Rotate Earth and Moon
     Earth.rotation_y += time.dt 
     
@@ -104,7 +108,7 @@ def update():
     Orion.position = (orionX, orionY, orionZ)
     Arrow.look_at(Orion, axis="up")
     
-    txt.text="X = " + str(orionX)
+    txt.text="X = " + str(data.getValue(1, int(currentTime - 8)))
     txt.position=(-.78, .4)
 
     txt2.text="Z = " + str(orionZ)
@@ -113,7 +117,12 @@ def update():
     txt3.text="Y = " + str(orionY)
     txt3.position=(-.78, .34)
 
+    txttime.text="Time Elapsed: " + str(currentTime)
+    txttime.position=(-.78, .43)
+
 skybox_image = load_texture("stars.jpg")
 Sky(texture=skybox_image)
+
+
 
 app.run()
