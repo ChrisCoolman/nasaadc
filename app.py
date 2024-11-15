@@ -1,5 +1,7 @@
 from ursina import *
 import math
+import data
+
 
 app = Ursina(title='Astroworlds')
 Earth = Entity(model="sphere", texture="earth.jpg")
