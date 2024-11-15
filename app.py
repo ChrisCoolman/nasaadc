@@ -72,8 +72,12 @@ def input(key):
     elif key == 'g':
         # Slow Down Time
         application.time_scale += 1
+        if application.time_scale >= 15:
+            application.time_scale = 15
     elif key == 'h':
         application.time_scale -= 1
+        if application.time_scale < 0:
+            application.time_scale = 0
 
 def update():
     global moon_orbit_angle, orionX, orionZ, orionY
