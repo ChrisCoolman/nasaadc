@@ -9,7 +9,6 @@ Moon = Entity(model="sphere", texture="moon.jpg")
 Orion = Entity(model="Orion.obj")
 Arrow = Entity(model="ballcam.obj", position=(20,0,-20), scale=0.5, color=color.gray)
 
-
 txt = Text(text="X = " + str(time.dt + 1), position=(-.78, .4))
 txt2 = Text(text="Z = " + str(time.dt + 1), position=(-.78, .4))
 txt3 = Text(text="Y = " + str(time.dt + 1), position=(-.78, .4))
@@ -35,8 +34,8 @@ Earth.scale = (39.588, 39.588, 39.588)
 # Orion
 Orion.scale = 0.005
 orionX = 15
-orionZ = 15
 orionY = 0
+orionZ = 15
 
 # Create a custom camera
 camera_pivot = Entity()
@@ -103,6 +102,11 @@ def update():
         target_pos = Moon.position + Vec3(0, 3, -5)
         camera_pivot.position = lerp(camera_pivot.position, target_pos, time.dt * 5)
         camera_pivot.look_at(Moon)
+
+    orionX = float(data.orionX[1])
+    orionY = float(data.orionY[1])
+    orionZ = float(data.orionZ[1])
+
 
     # orionX += time.dt*5
     Orion.position = (orionX, orionY, orionZ)
