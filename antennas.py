@@ -1,8 +1,15 @@
 from ursina import *
+from math_stuff import calculations
 
 app = Ursina()
 
-#e1 = Entity(model="quad", texture="texture_name", position=Vec3(-6.5,3.5,3), scale=(2.65,1,1))
+#squares around each antenna
+e1 = Entity(model="quad", texture="texture_name", position=Vec3(-6.4,3.5,3), scale=(2.65,1,1), color=color.black)
+e2 = Entity(model="quad", texture="texture_name", position=Vec3(-0.75,3.5,3), scale=(2.65,1,1), color=color.black)
+e3 = Entity(model="quad", texture="texture_name", position=Vec3(4.9,3.5,3), scale=(2.65,1,1), color=color.black)
+
+#bottom left text
+bottomleft = Text(text="Press 1, 2, or 3 to select an Antenna. Press Esc to deselect.", scale=2, x=-0.85, y=-0.4)
 
 #Define antennas
 antenna1 = Text(text="Antenna 1", scale=2, x=-0.8, y=0.4, color=color.red)
@@ -29,22 +36,22 @@ def input(key):
     if key == '1':
         current_selection = "1"
         selection_text.text = "(selected)"
-        selection_text.x = -0.56
-        info_text.text = "info for antenna 1 here"
+        selection_text.x = -0.54
+        info_text.text = "info for antenna 1 here\n" + str(calculations(DR, R))
         info_text.x = -0.8
     elif key == '2':
         current_selection = "2"
         selection_text.text = "(selected)"
-        selection_text.x = 0.05
-        info_text.text = "info for antenna 2 here"
+        selection_text.x = 0.06
+        info_text.text = "info for antenna 2 here\n" + str(calculations(DR, R))
         info_text.x = -0.2
     elif key == '3':
         current_selection = "3"
         selection_text.text = "(selected)"
-        selection_text.x = 0.64
-        info_text.text = "info for antenna 3 here"
+        selection_text.x = 0.66
+        info_text.text = "info for antenna 3 here\n" + str(calculations(DR, R))
         info_text.x = 0.4
-    elif key == 'escape':  #Allow deselecting with the escape key
+    elif key == 'escape':  #deselecting with the escape key
         current_selection = None
         selection_text.text = ""
         info_text.text = ""
