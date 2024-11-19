@@ -1,4 +1,5 @@
 from ursina import *
+import time
 import math
 import data
 
@@ -9,9 +10,14 @@ Moon = Entity(model="sphere", texture="moon.jpg")
 Orion = Entity(model="Orion.obj")
 Arrow = Entity(model="ballcam.obj", position=(20,0,-20), scale=0.5, color=color.gray)
 
+
 txt = Text(text="X = " + str(time.dt + 1), position=(-.78, .4))
 txt2 = Text(text="Z = " + str(time.dt + 1), position=(-.78, .4))
 txt3 = Text(text="Y = " + str(time.dt + 1), position=(-.78, .4))
+
+#for time timer
+elapsedTime = 0
+timerText = Text(text="00:00", position=(-.78, .43))
 
 a = Audio("woosh.mp3", loop=False, autoplay=False)
 
@@ -34,8 +40,8 @@ Earth.scale = (395.88, 395.88, 395.88)
 # Orion
 Orion.scale = 0.005
 orionX = 15
-orionY = 0
 orionZ = 15
+orionY = 0
 
 # Create a custom camera
 camera_pivot = Entity()
@@ -46,6 +52,7 @@ editor_camera = EditorCamera(enabled=True)
 camera.position = (0, 0, -40)
 camera_pivot.enabled = False
 
+<<<<<<< HEAD
 size = len(data.orionX) - 3
 
 points = []
@@ -58,6 +65,10 @@ curve_renderer = Entity(model=Mesh(vertices=points, mode='line'))
 
 #for i in range(1, len(data.orionX) - 3):
 #    Entity(model="sphere", position=(float(data.orionX[i])/100, float(data.orionY[i])/100, float(data.orionZ[i])/100), scale=2, color=color.red)
+=======
+
+
+>>>>>>> 2a71f0df9657cad061a27145c7787efcf072db7a
 def input(key):
     global earthLock, moonLock, a, orionLock
     if key == 'f':
@@ -91,7 +102,7 @@ def input(key):
             application.time_scale = 0
 
 def update():
-    global moon_orbit_angle, orionX, orionZ, orionY
+    global moon_orbit_angle, orionX, orionZ, orionY, elapsedTime
     
     # Rotate Earth and Moon
     Earth.rotation_y += time.dt 
@@ -115,11 +126,6 @@ def update():
         camera_pivot.position = lerp(camera_pivot.position, target_pos, time.dt * 5)
         camera_pivot.look_at(Moon)
 
-    orionX = float(data.orionX[1])
-    orionY = float(data.orionY[1])
-    orionZ = float(data.orionZ[1])
-
-
     # orionX += time.dt*5
     Orion.position = (orionX, orionY, orionZ)
     Arrow.look_at(Orion, axis="up")
@@ -132,6 +138,20 @@ def update():
 
     txt3.text="Y = " + str(orionY)
     txt3.position=(-.78, .34)
+
+
+    
+    elapsedTime += time.dt
+    mins = int(elapsedTime) // 60
+    secs = int(elapsedTime) % 60
+    timerText.text = f"{mins:02}:{secs:02}"
+
+
+    
+    
+
+
+    
 
 skybox_image = load_texture("stars.jpg")
 Sky(texture=skybox_image)
