@@ -29,7 +29,7 @@ moon_orbit_angle = 0
 Moon.scale = (9.897, 9.897, 9.897)
 
 # Set up Earth
-Earth.scale = (39.588, 39.588, 39.588)
+Earth.scale = (395.88, 395.88, 395.88)
 
 # Orion
 Orion.scale = 0.005
@@ -46,6 +46,18 @@ editor_camera = EditorCamera(enabled=True)
 camera.position = (0, 0, -40)
 camera_pivot.enabled = False
 
+size = len(data.orionX) - 3
+
+points = []
+
+for i in range(1, size):
+   points.append(Vec3(float(data.orionX[i])/100, float(data.orionY[i])/100, float(data.orionZ[i])/100))
+
+curve_renderer = Entity(model=Mesh(vertices=points, mode='line'))
+
+
+#for i in range(1, len(data.orionX) - 3):
+#    Entity(model="sphere", position=(float(data.orionX[i])/100, float(data.orionY[i])/100, float(data.orionZ[i])/100), scale=2, color=color.red)
 def input(key):
     global earthLock, moonLock, a, orionLock
     if key == 'f':
