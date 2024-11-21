@@ -10,10 +10,13 @@ Moon = Entity(model="sphere", texture="moon.jpg")
 Orion = Entity(model="Orion.obj")
 Arrow = Entity(model="ballcam.obj", position=(20,0,-20), scale=0.5, color=color.gray)
 
+orionSpeed = 1
+
 
 txt = Text(text="X = " + str(time.dt + 1), position=(-.78, .4))
 txt2 = Text(text="Z = " + str(time.dt + 1), position=(-.78, .4))
 txt3 = Text(text="Y = " + str(time.dt + 1), position=(-.78, .4))
+text4 = Text(text="Orion Speed = " + str(orionSpeed), position=(-78, .4))
 
 #for time timer
 elapsedTime = 0
@@ -63,7 +66,7 @@ curve_renderer = Entity(model=Mesh(vertices=points, mode='line'))
 #for i in range(1, len(data.orionX) - 3):
 #    Entity(model="sphere", position=(float(data.orionX[i])/100, float(data.orionY[i])/100, float(data.orionZ[i])/100), scale=2, color=color.red)
 def input(key):
-    global earthLock, moonLock, a, orionLock
+    global earthLock, moonLock, a, orionLock, orionSpeed
     if key == 'f':
         a.play()
         moonLock = False
@@ -84,20 +87,22 @@ def input(key):
         orionLock = not orionLock
         editor_camera.enabled = not orionLock
         camera_pivot.enabled = orionLock
-    elif key == 'g':
+    elif key == 'g' and orionSpeed < 15:
         # Slow Down Time
         application.time_scale += 1
+        orionSpeed += 1
         if application.time_scale >= 15:
             application.time_scale = 15
-    elif key == 'h':
+    elif key == 'h' and orionSpeed > 0:
         application.time_scale -= 1
+        orionSpeed -= 1
         if application.time_scale < 0:
             application.time_scale = 0
 
 def update():
-    global orionX, orionZ, orionY, elapsedTime, cout
+    global orionX, orionZ, orionY, elapsedTime, cout, orionSpeed
     
-    cout+=1
+    cout+=orionSpeed
     if cout > 12978:
         cout = 1
     else:
@@ -132,6 +137,9 @@ def update():
 
     txt3.text="Y = " + str(orionY)
     txt3.position=(-.78, .34)
+
+    text4.text="Orion speed = " + str(orionSpeed)
+    text4.position = (0, 0)
 
 
     
