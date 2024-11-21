@@ -32,24 +32,29 @@ def update():
 def input(key):
     global current_selection
 
+  #  DR = 0
+  #  R = 0
+   # out = 0
+
     #Check which key is pressed and update the selection
     if key == '1':
+
         current_selection = "1"
         selection_text.text = "(selected)"
         selection_text.x = -0.54
-        info_text.text = "info for antenna 1 here\n" + str(calculations(DR, R))
+        info_text.text = "info for antenna 1 here\n" + str(calculations(DR, R, out))
         info_text.x = -0.8
     elif key == '2':
         current_selection = "2"
         selection_text.text = "(selected)"
         selection_text.x = 0.06
-        info_text.text = "info for antenna 2 here\n" + str(calculations(DR, R))
+        info_text.text = "info for antenna 2 here\n" + str(calculations(DR, R, out))
         info_text.x = -0.2
     elif key == '3':
         current_selection = "3"
         selection_text.text = "(selected)"
         selection_text.x = 0.66
-        info_text.text = "info for antenna 3 here\n" + str(calculations(DR, R))
+        info_text.text = "info for antenna 3 here\n" + str(calculations(DR, R, out))
         info_text.x = 0.4
     elif key == 'escape':  #deselecting with the escape key
         current_selection = None
