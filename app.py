@@ -99,7 +99,7 @@ def update():
     
     cout+=1
     if cout > 12978:
-        cout = 0
+        cout = 1
     else:
         Orion.position = (float(data.orionX[cout])/100, float(data.orionY[cout])/100, float(data.orionZ[cout])/100)
 
