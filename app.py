@@ -1,6 +1,5 @@
 from ursina import *
 import time
-import math
 import data
 
 
