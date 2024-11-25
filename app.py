@@ -3,12 +3,14 @@ import time
 import math
 import data
 
-
-app = Ursina(title='Astroworlds')
+width = 600
+height = 400
+app = Ursina(title='Astroworlds', width = 600, height = 400)
 Earth = Entity(model="sphere", texture="earth.jpg")
 Moon = Entity(model="sphere", texture="moon.jpg")
 Orion = Entity(model="Orion.obj")
 Arrow = Entity(model="ballcam.obj", position=(-5, 39.588, -15), scale=2.6, color=color.gray)
+Controls = Entity(model="quad", texture="textures\spaceship_ui.png", texture_scale = (width, height), scale = (width*.1, height*.1), origin = (-.5,.5), position = (-.3,.4),)
 
 orionSpeed = 1
 
@@ -55,12 +57,20 @@ camera_pivot.enabled = False
 
 size = len(data.orionX) - 3
 
-points = []
+half = 6488 # i think this is half
 
-for i in range(1, size):
+points = []
+otherPoints = []
+
+for i in range(1, size - half):
    points.append(Vec3(float(data.orionX[i])/100, float(data.orionY[i])/100, float(data.orionZ[i])/100))
 
-curve_renderer = Entity(model=Mesh(vertices=points, mode='line'))
+curve_renderer = Entity(model=Mesh(vertices=points, mode='line'), color=color.green)
+
+for i in range(size-half, size):
+   otherPoints.append(Vec3(float(data.orionX[i])/100, float(data.orionY[i])/100, float(data.orionZ[i])/100))
+
+second_curve_renderer = Entity(model=Mesh(vertices=otherPoints, mode='line'), color=color.blue)
 
 
 #for i in range(1, len(data.orionX) - 3):
