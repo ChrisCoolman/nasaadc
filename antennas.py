@@ -1,5 +1,6 @@
 from ursina import *
 from math_stuff import calculations
+import math
 
 app = Ursina()
 
@@ -32,9 +33,9 @@ def update():
 def input(key):
     global current_selection
 
-  #  DR = 0
-  #  R = 0
-   # out = 0
+    DR=float()
+    R=float()
+    out=float(0)
 
     #Check which key is pressed and update the selection
     if key == '1':
