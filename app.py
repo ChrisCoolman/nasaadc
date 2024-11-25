@@ -107,6 +107,14 @@ def update():
         cout = 1
     else:
         Orion.position = (float(data.orionX[cout])/100, float(data.orionY[cout])/100, float(data.orionZ[cout])/100)
+        txt.text = "X = " + str(data.orionX[cout])
+        txt.position = (-.78, .4)
+
+        txt2.text = "Y = " + str(data.orionY[cout])
+        txt2.position = (-.78, .37)
+
+        txt3.text = "Z = " + str(data.orionZ[cout])
+        txt3.position = (-.78, .34)
 
 
     # Rotate Earth and Moon
@@ -128,15 +136,6 @@ def update():
     # orionX += time.dt*5
     #Orion.position = (orionX, orionY, orionZ)
     Arrow.look_at(Orion, axis="up")
-    
-    txt.text="X = " + str(orionX)
-    txt.position=(-.78, .4)
-
-    txt2.text="Z = " + str(orionZ)
-    txt2.position=(-.78, .37)
-
-    txt3.text="Y = " + str(orionY)
-    txt3.position=(-.78, .34)
 
     text4.text="Orion speed = " + str(orionSpeed)
     text4.position = (0, 0)
