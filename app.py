@@ -3,14 +3,13 @@ import time
 import math
 import data
 
-width = 600
-height = 400
+width = 6000
+height = 4000
 app = Ursina(title='Astroworlds', width = 600, height = 400)
 Earth = Entity(model="sphere", texture="earth.jpg")
 Moon = Entity(model="sphere", texture="moon.jpg")
 Orion = Entity(model="Orion.obj")
 Arrow = Entity(model="ballcam.obj", position=(-5, 39.588, -15), scale=2.6, color=color.gray)
-Controls = Entity(model="quad", texture="textures\spaceship_ui.png", texture_scale = (width, height), scale = (width*.1, height*.1), origin = (-.5,.5), position = (-.3,.4),)
 
 orionSpeed = 1
 

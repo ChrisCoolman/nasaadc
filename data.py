@@ -4,6 +4,7 @@ orionX = []
 orionY = []
 orionZ = []
 
+
 with open("newData.csv", newline='') as f:
     reader = csv.reader(f)
     data = list(reader)
@@ -13,17 +14,17 @@ with open("newData.csv", newline='') as f:
     for line in data[1:]:
     #gets the numbers in the first colum (the x)
         orionX.append(line[1])
-    print(orionX)
+    #print(orionX)
 
 #takes the data after the header so it starts at first number
     for line in data[1:]:
     #gets numbers in the second colum (the y)
         orionY.append(line[2])
-    print(orionY)
+    #print(orionY)
 
 #takes the data after the header so it starts at first number
     for line in data[1:]:
           #gets the numbersin the third colum (they z)
         orionZ.append(line[3])
-    print(orionZ) 
+    #print(orionZ) 
 
