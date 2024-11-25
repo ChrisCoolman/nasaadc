@@ -8,7 +8,7 @@ app = Ursina(title='Astroworlds')
 Earth = Entity(model="sphere", texture="earth.jpg")
 Moon = Entity(model="sphere", texture="moon.jpg")
 Orion = Entity(model="Orion.obj")
-Arrow = Entity(model="ballcam.obj", position=(20,0,-20), scale=0.5, color=color.gray)
+Arrow = Entity(model="ballcam.obj", position=(-5, 39.588, -15), scale=2.6, color=color.gray)
 
 orionSpeed = 1
 
@@ -31,17 +31,17 @@ orionLock = False
 window.color = color.black
 
 # Set up Moon
-Moon.scale = (9.897, 9.897, 9.897)
-Moon.position = (float(data.orionX[6489])/100, float(data.orionY[6489])/100, float(data.orionZ[6489])/100)
+Moon.scale = (75,75,75)
+Moon.position = (float(data.orionX[6489])/100, float(data.orionY[6150])/100, float(data.orionZ[6489])/100)
 
 # Set up Earth
 Earth.scale = (39.588, 39.588, 39.588)
 
 # Orion
 Orion.scale = 0.05
-orionX = 15
-orionZ = 15
-orionY = 0
+orionX = data.orionX[1]
+orionY = data.orionY[2]
+orionZ = data.orionZ[3]
 cout = 0
 
 # Create a custom camera

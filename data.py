@@ -4,7 +4,7 @@ orionX = []
 orionY = []
 orionZ = []
 
-with open("newData.csv", newline='') as f:
+with open("nasaadc-main/newData.csv", newline='') as f:
     reader = csv.reader(f)
     data = list(reader)
 
