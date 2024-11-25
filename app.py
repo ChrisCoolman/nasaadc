@@ -2,8 +2,9 @@ from ursina import *
 import time
 import data
 
-
-app = Ursina(title='Astroworlds')
+width = 6000
+height = 4000
+app = Ursina(title='Astroworlds', width = 600, height = 400)
 Earth = Entity(model="sphere", texture="earth.jpg")
 Moon = Entity(model="sphere", texture="moon.jpg")
 Orion = Entity(model="Orion.obj")
@@ -54,12 +55,20 @@ camera_pivot.enabled = False
 
 size = len(data.orionX) - 3
 
-points = []
+half = 6488 # i think this is half
 
-for i in range(1, size):
+points = []
+otherPoints = []
+
+for i in range(1, size - half):
    points.append(Vec3(float(data.orionX[i])/100, float(data.orionY[i])/100, float(data.orionZ[i])/100))
 
-curve_renderer = Entity(model=Mesh(vertices=points, mode='line'))
+curve_renderer = Entity(model=Mesh(vertices=points, mode='line'), color=color.green)
+
+for i in range(size-half, size):
+   otherPoints.append(Vec3(float(data.orionX[i])/100, float(data.orionY[i])/100, float(data.orionZ[i])/100))
+
+second_curve_renderer = Entity(model=Mesh(vertices=otherPoints, mode='line'), color=color.blue)
 
 
 #for i in range(1, len(data.orionX) - 3):
