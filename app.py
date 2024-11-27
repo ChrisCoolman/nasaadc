@@ -13,11 +13,17 @@ Arrow = Entity(model="ballcam.obj", position=(-5, 39.588, -15), scale=2.6, color
 
 orionSpeed = orionVX + orionVY + orionVZ
 
+key_text = Text(
+    text="KEY:\nGreen: Rocket Going\nBlue: Rocket Coming Back",
+    position=(-.85, .50),
+    color=color.white,
+    scale=0.8
+)
 
-txt = Text(text="X = " + str(time.dt + 1), position=(-.78, .4))
-txt2 = Text(text="Z = " + str(time.dt + 1), position=(-.78, .4))
-txt3 = Text(text="Y = " + str(time.dt + 1), position=(-.78, .4))
-text4 = Text(text="Orion Speed = " + str(orionSpeed), position=(-.78, .4))
+txt = Text(text="X = " + str(time.dt + 1), position=(-.28, .4))
+txt2 = Text(text="Z = " + str(time.dt + 1), position=(-.28, .4))
+txt3 = Text(text="Y = " + str(time.dt + 1), position=(-.28, .4))
+text4 = Text(text="Orion Speed = " + str(orionSpeed), position=(-28, .4))
 
 #for time timer
 elapsedTime = 0

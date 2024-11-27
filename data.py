@@ -4,10 +4,6 @@ orionX = []
 orionY = []
 orionZ = []
 
-<<<<<<< HEAD
-=======
-
->>>>>>> dcba7f087727da0d0d018b2805d94d1f88819003
 with open("newData.csv", newline='') as f:
     reader = csv.reader(f)
     data = list(reader)
