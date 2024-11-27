@@ -1,6 +1,7 @@
 from ursina import *
 import time
 import data
+import speed
 
 width = 6000
 height = 4000
@@ -10,13 +11,13 @@ Moon = Entity(model="sphere", texture="moon.jpg")
 Orion = Entity(model="Orion.obj")
 Arrow = Entity(model="ballcam.obj", position=(-5, 39.588, -15), scale=2.6, color=color.gray)
 
-orionSpeed = 1
+orionSpeed = orionVX + orionVY + orionVZ
 
 
 txt = Text(text="X = " + str(time.dt + 1), position=(-.78, .4))
 txt2 = Text(text="Z = " + str(time.dt + 1), position=(-.78, .4))
 txt3 = Text(text="Y = " + str(time.dt + 1), position=(-.78, .4))
-text4 = Text(text="Orion Speed = " + str(orionSpeed), position=(-78, .4))
+text4 = Text(text="Orion Speed = " + str(orionSpeed), position=(-.78, .4))
 
 #for time timer
 elapsedTime = 0
@@ -31,11 +32,11 @@ orionLock = False
 window.color = color.black
 
 # Set up Moon
-Moon.scale = (75,75,75)
+Moon.scale = (50,50,50)
 Moon.position = (float(data.orionX[6489])/100, float(data.orionY[6150])/100, float(data.orionZ[6489])/100)
 
 # Set up Earth
-Earth.scale = (39.588, 39.588, 39.588)
+Earth.scale = (75,75,75)
 
 # Orion
 Orion.scale = 0.05
