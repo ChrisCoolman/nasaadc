@@ -4,6 +4,15 @@ import math
 
 app = Ursina()
 
+#variables for the equation
+pt=float(10.0)
+gt=float(9.0)
+losses=19.43
+nr=0.55
+greek_11=0.136363636
+kb=-228.6
+ts=float(22)
+
 #squares around each antenna
 e1 = Entity(model="quad", texture="texture_name", position=Vec3(-6.4,3.5,3), scale=(2.65,1,1), color=color.black)
 e2 = Entity(model="quad", texture="texture_name", position=Vec3(-0.75,3.5,3), scale=(2.65,1,1), color=color.black)
