@@ -11,7 +11,7 @@ losses=19.43
 nr=0.55
 greek_11=0.136363636
 kb=-228.6
-ts=float(22)
+ts=float(22) 
 
 #squares around each antenna
 e1 = Entity(model="quad", texture="texture_name", position=Vec3(-6.4,3.5,3), scale=(2.65,1,1), color=color.black)
@@ -42,7 +42,7 @@ def update():
 def input(key):
     global current_selection
 
-    DR=float(36)
+    DR=float(70)
     R=float(17)
     out=float(0)
 
