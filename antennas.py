@@ -42,8 +42,8 @@ def update():
 def input(key):
     global current_selection
 
-    DR=float()
-    R=float()
+    DR=float(36)
+    R=float(17)
     out=float(0)
 
     #Check which key is pressed and update the selection
