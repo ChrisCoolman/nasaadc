@@ -3,6 +3,7 @@ import time
 import data
 import speed
 
+
 width = 6000
 height = 4000
 app = Ursina(title='Astroworlds', width = 600, height = 400)
@@ -11,7 +12,8 @@ Moon = Entity(model="sphere", texture="moon.jpg")
 Orion = Entity(model="Orion.obj")
 Arrow = Entity(model="ballcam.obj", position=(-5, 39.588, -15), scale=2.6, color=color.gray)
 
-orionSpeed = orionVX + orionVY + orionVZ
+orionSpeed = 1
+
 
 key_text = Text(
     text="KEY:\nGreen: Rocket Going\nBlue: Rocket Coming Back",
@@ -23,7 +25,9 @@ key_text = Text(
 txt = Text(text="X = " + str(time.dt + 1), position=(-.28, .4))
 txt2 = Text(text="Z = " + str(time.dt + 1), position=(-.28, .4))
 txt3 = Text(text="Y = " + str(time.dt + 1), position=(-.28, .4))
-text4 = Text(text="Orion Speed = " + str(orionSpeed), position=(-28, .4))
+# orionSpeed = 5
+txt4 = Text(text="Orion Speed = " + str(orionSpeed), position=(-.85, .3))
+
 
 #for time timer
 elapsedTime = 0
@@ -45,7 +49,7 @@ Moon.position = (float(data.orionX[6489])/100, float(data.orionY[6150])/100, flo
 Earth.scale = (75,75,75)
 
 # Orion
-Orion.scale = 0.05
+Orion.scale = 0.09
 orionX = data.orionX[1]
 orionY = data.orionY[2]
 orionZ = data.orionZ[3]
@@ -152,8 +156,8 @@ def update():
     #Orion.position = (orionX, orionY, orionZ)
     Arrow.look_at(Orion, axis="up")
 
-    text4.text="Orion speed = " + str(orionSpeed)
-    text4.position = (0, 0)
+    txt4.text="Orion speed = " + str(orionSpeed)
+    # txt4.position = (0, 0)
 
 
     
