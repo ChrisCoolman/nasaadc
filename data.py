@@ -9,6 +9,9 @@ Ds24 = []
 Ds24_data = []
 Ds34 = []
 Ds34_data = []
+orionVX = []
+orionVY = []
+orionVZ = []
 
 #10 is where i need to start -Eddy 
 with open("newData.csv", newline='') as f:
@@ -63,3 +66,19 @@ with open("newData.csv", newline='') as f:
         #gets numbers in fourteenth colum (Data from Ds34)
         Ds34_data.append(line[15])
     #print(Ds34_data)
+    for line in data[1:]:
+    #gets the numbers in the first colum (the x)
+        orionVX.append(line[4])
+    print(orionVX)
+
+#takes the data after the header so it starts at first number
+    for line in data[1:]:
+    #gets numbers in the second colum (the y)
+        orionVY.append(line[5])
+    print(orionVY)
+
+#takes the data after the header so it starts at first number
+    for line in data[1:]:
+          #gets the numbersin the third colum (they z)
+        orionVZ.append(line[6])
+    print(orionVZ) 
