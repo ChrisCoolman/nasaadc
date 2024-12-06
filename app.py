@@ -1,7 +1,6 @@
 from ursina import *
 import time
 import data
-import speed
 
 
 width = 6000
@@ -120,25 +119,21 @@ def input(key):
 
 def update():
     global orionX, orionZ, orionY, elapsedTime, cout, orionSpeed
-    
-    cout+=orionSpeed
-    if cout > 12978:
-        cout = 1
-    else:
-        Orion.position = (float(data.orionX[cout])/100, float(data.orionY[cout])/100, float(data.orionZ[cout])/100)
-        txt.text = "X = " + str(data.orionX[cout])
-        txt.position = (-.78, .4)
 
-        txt2.text = "Y = " + str(data.orionY[cout])
-        txt2.position = (-.78, .37)
-
-        txt3.text = "Z = " + str(data.orionZ[cout])
-        txt3.position = (-.78, .34)
-
-
-    # Rotate Earth and Moon
-    Earth.rotation_y += time.dt 
-
+    cout += orionSpeed
+    if cout >= len(data.orionX):
+        cout = 0
+    x_value = data.orionX[cout] if cout < len(data.orionX) else '0'
+    y_value = data.orionY[cout] if cout < len(data.orionY) else '0'
+    z_value = data.orionZ[cout] if cout < len(data.orionZ) else '0'
+    Orion.position = (float(x_value) / 100, float(y_value) / 100, float(z_value) / 100)
+    txt.text = "X = " + str(x_value)
+    txt.position = (-.78, .4)
+    txt2.text = "Y = " + str(y_value)
+    txt2.position = (-.78, .37)
+    txt3.text = "Z = " + str(z_value)
+    txt3.position = (-.78, .34)
+    Earth.rotation_y += time.dt
     Orion.look_at(Moon)
 
     # Smooth camera following
