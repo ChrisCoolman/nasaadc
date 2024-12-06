@@ -18,7 +18,7 @@ def calculations(DR, R, out):
     if nr * (((math.pi) + DR / greek_11) ** 2) <= 0:
         raise ValueError("Invalid input for nr calculation: must be positive.")
     
-    if 4000 * (math.pi) * R / greek_11 <= 0:
+    if 4000 * (math.pi) * float(R) / greek_11 <= 0:
         raise ValueError("Invalid input for R calculation: must be positive.")
     
     if ts <= 0:
@@ -26,7 +26,7 @@ def calculations(DR, R, out):
     
     out = float((10 * (pt + gt - losses + 
                         10 * (math.log10(nr * (((math.pi) + DR / greek_11) ** 2)) - 
-                        20 * (math.log10(4000 * (math.pi) * R / greek_11)) - kb - 
+                        20 * (math.log10(4000 * (math.pi) * float(R) / greek_11)) - kb - 
                         10 * (math.log10(ts))) / 10) / 1000))
     
     return out
