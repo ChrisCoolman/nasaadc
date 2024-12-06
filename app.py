@@ -1,7 +1,7 @@
 from ursina import *
 import time
 import data
-import speed
+#import speed
 
 
 width = 6000
