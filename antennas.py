@@ -82,7 +82,11 @@ def input(key):
         selection_text.text = "(selected)"
         selection_text.x = -0.54
 <<<<<<< HEAD
+<<<<<<< HEAD
         info_text.text = "info for antenna 1 here\n" + str(calculations(DR, Ds54_data[i], out))
+=======
+        info_text.text = "Calculations for Antenna 1: \n" + str(calculations(DR, R, out))
+>>>>>>> 44e1a0e788f98f454c31f8e3a9829852a108e1ea
 =======
         info_text.text = "Calculations for Antenna 1: \n" + str(calculations(DR, R, out))
 >>>>>>> 44e1a0e788f98f454c31f8e3a9829852a108e1ea
