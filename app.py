@@ -2,7 +2,6 @@ from ursina import *
 import time
 import data
 
-
 width = 6000
 height = 4000
 app = Ursina(title='Astroworlds', width = 600, height = 400)
@@ -32,7 +31,7 @@ txt4 = Text(text="Orion Speed = " + str(orionSpeed), position=(-.85, .3))
 elapsedTime = 0
 timerText = Text(text="00:00", position=(-.78, .43))
 
-a = Audio("woosh.mp3", loop=False, autoplay=False)
+a = Audio("assets/sounds/woosh.mp3", loop=False, autoplay=False)
 
 earthLock = False
 moonLock = False
@@ -42,7 +41,7 @@ window.color = color.black
 
 # Set up Moon
 Moon.scale = (50,50,50)
-Moon.position = (float(data.orionX[6489])/100, float(data.orionY[6150])/100, float(data.orionZ[6489])/100)
+Moon.position = (float(data.orionX[6489]) / 100, float(data.orionY[6150]) / 100, float(data.orionZ[6489]) / 100)
 
 # Set up Earth
 Earth.scale = (75,75,75)
@@ -65,18 +64,18 @@ camera_pivot.enabled = False
 
 size = len(data.orionX) - 3
 
-half = 6488 # i think this is half
+half = 6488 # I think this is half
 
 points = []
 otherPoints = []
 
 for i in range(1, size - half):
-   points.append(Vec3(float(data.orionX[i])/100, float(data.orionY[i])/100, float(data.orionZ[i])/100))
+   points.append(Vec3(float(data.orionX[i]) / 100, float(data.orionY[i]) / 100, float(data.orionZ[i]) / 100))
 
 curve_renderer = Entity(model=Mesh(vertices=points, mode='line'), color=color.green)
 
 for i in range(size-half, size):
-   otherPoints.append(Vec3(float(data.orionX[i])/100, float(data.orionY[i])/100, float(data.orionZ[i])/100))
+   otherPoints.append(Vec3(float(data.orionX[i]) / 100, float(data.orionY[i]) / 100, float(data.orionZ[i]) / 100))
 
 second_curve_renderer = Entity(model=Mesh(vertices=otherPoints, mode='line'), color=color.blue)
 

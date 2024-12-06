@@ -14,7 +14,7 @@ orionVY = []
 orionVZ = []
 
 #10 is where i need to start -Eddy 
-with open("newData.csv", newline='') as f:
+with open("assets/data/newData.csv", newline='') as f:
     reader = csv.reader(f)
     data = list(reader)
 
