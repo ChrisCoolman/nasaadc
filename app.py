@@ -1,10 +1,6 @@
 from ursina import *
 import time
 import data
-<<<<<<< HEAD
-=======
-#import speed
->>>>>>> 97526b42c9a243ad65f758fad799a6a751962db3
 
 
 width = 6000
