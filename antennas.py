@@ -80,23 +80,19 @@ def input(key):
         current_selection = "1"
         selection_text.text = "(selected)"
         selection_text.x = -0.54
-        info_text.text = "info for antenna 1 here\n" + str(calculations(DR, Ds54_data[i], out))
-
-        info_text.text = "Calculations for Antenna 1: \n" + str(calculations(DR, R, out))
-
-        info_text.text = "Calculations for Antenna 1: \n" + str(calculations(DR, R, out))
+        info_text.text = "Calculations for Antenna 1: \n" + str(calculations(DR, Ds54_data[i], out))
         info_text.x = -0.8
     elif key == '2':
         current_selection = "2"
         selection_text.text = "(selected)"
         selection_text.x = 0.06
-        info_text.text = "Calculations for Antenna 2:\n" + str(calculations(DR, R, out))
+        info_text.text = "Calculations for Antenna 2:\n" + str(calculations(DR, Ds54_data[i], out))
         info_text.x = -0.2
     elif key == '3':
         current_selection = "3"
         selection_text.text = "(selected)"
         selection_text.x = 0.66
-        info_text.text = "Calculations for Antenna 3:\n" + str(calculations(DR, R, out))
+        info_text.text = "Calculations for Antenna 3:\n" + str(calculations(DR, Ds54_data[i], out))
         info_text.x = 0.4
     elif key == 'escape':  #deselecting with the escape key
         current_selection = None
